@@ -1,5 +1,4 @@
-
-body{
+body {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,13 +8,24 @@ body{
 #canvas {
     background-image: url('images/HD-wallpaper-black-space-black-star-stars.jpg');
     position: relative;
-    width: 350px;
-    height: 500px;
+    width: 450px;
+    height: 700px;
+    z-index: -1;
 }
+
 .astronaut {
+    z-index: 1;
     position: absolute;
     width: 100px;
     height: 100px;
     background-image: url('./images/a.png');
     background-size: cover;
+}
+
+.platform {
+    position: absolute;
+    width: 85px;
+    height: 60px;
+    background-color: red;
+    background-image: url('images/luna.png');
 }
