@@ -7,7 +7,6 @@ function Game() {
     this.platforms = []
 }
 Game.prototype.createPlatforms = function (platformCount){
-    console.log(platformCount)
     for (let i = 0; i < platformCount; i++) {
         let platGap = 600 / platformCount
         let newPlatBottom = 50 + i * platGap
