@@ -41,21 +41,21 @@ Astronaut.prototype.fall = function () {
         for (let i = 0; i < game.platforms.length; i++) {
             if (self.coorx >= game.platforms[i].left && self.coorx <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
                 if(i !== 0){
-                    game.checkMove()
+                    game.checkMove(i)
                     console.log("cambia")
 
                 }
-                self.coory += 10
+                //self.coory += 10
                 clearInterval(self.downTimerId)
                 self.jump()   
             }
             else if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom-30 && self.coory <= game.platforms[i].bottom-30 + game.platforms[i].height){
                 if (i != 0) {
-                    game.checkMove()
+                    game.checkMove(i)
                     console.log("cambia")
                 }
                 
-                self.coory += 10
+                //self.coory += 10
                 clearInterval(self.downTimerId)
                 self.jump()  
             }

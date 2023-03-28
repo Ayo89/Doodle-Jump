@@ -5,6 +5,7 @@ function Game() {
     this.canvas = document.querySelector('#canvas')
     this.astronaut
     this.platforms = []
+    this.timerId
 }
 Game.prototype.createPlatforms = function (platformCount){
     for (let i = 0; i < platformCount; i++) {
@@ -16,7 +17,7 @@ Game.prototype.createPlatforms = function (platformCount){
 }
 Game.prototype.updatePlataforms = function (){
     let platGap = 600 / 5
-    let newPlatBottom = 50 + 4 * platGap
+    let newPlatBottom = 50 + (4) * platGap 
     let newPlatform = new Platform(newPlatBottom)
     this.platforms.push(newPlatform)
     
@@ -40,17 +41,28 @@ Game.prototype.moveAstronaut = function (){
         }
     }
 }
-Game.prototype.checkMove = function (){
-    this.canvas.removeChild(this.platforms[0].visual)  
-    this.platforms.shift()
-    for (let i = 0; i < this.platforms.length; i++) {
-        let distance =this.platforms[i].bottom 
-        distance -=120
-        this.platforms[i].bottom-=120
-        this.platforms[i].visual.style.bottom = distance + 'px'
-    }
+Game.prototype.checkMove = function (steps){
+   
+    for(let i = 0; i< steps; i++){
+        this.remove()
+        
+        for (let i = 0; i < this.platforms.length; i++) {
+            let distance = this.platforms[i].bottom
+            distance -= 120
+            this.platforms[i].bottom -= 120
+            this.platforms[i].visual.style.bottom = distance + 'px'
+        }
+        this.updatePlataforms()
+    }    
 
-    this.updatePlataforms()
+
+    
+       
+}
+
+Game.prototype.remove = function (){
+    this.canvas.removeChild(this.platforms[0].visual)
+    this.platforms.shift()
 }
 
 export default Game
