@@ -1,7 +1,7 @@
 import game from './index.js'
 
 function Astronaut(coorx, coory) {
-    this.width = 65
+    this.width = 32
     this.height = 90
     this.coorx = parseInt(coorx)
     this.coory = parseInt(coory)
@@ -11,7 +11,6 @@ function Astronaut(coorx, coory) {
     this.upTimerId
     this.downTimerId
     this.isJumping = false
-    
 }
 
 Astronaut.prototype.jump = function () {
@@ -38,16 +37,24 @@ Astronaut.prototype.fall = function () {
     let cont = -1
     cont++
     let self = this
-    
     this.downTimerId = setInterval(function () {
         for (let i = 0; i < game.platforms.length; i++) {
             if (self.coorx >= game.platforms[i].left && self.coorx <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
-                
+                if(i !== 0){
+                    game.checkMove()
+                    console.log("cambia")
+
+                }
                 self.coory += 10
                 clearInterval(self.downTimerId)
                 self.jump()   
             }
-            if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom-30 && self.coory <= game.platforms[i].bottom-30 + game.platforms[i].height){
+            else if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom-30 && self.coory <= game.platforms[i].bottom-30 + game.platforms[i].height){
+                if (i != 0) {
+                    game.checkMove()
+                    console.log("cambia")
+                }
+                
                 self.coory += 10
                 clearInterval(self.downTimerId)
                 self.jump()  

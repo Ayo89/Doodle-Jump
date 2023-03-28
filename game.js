@@ -14,6 +14,13 @@ Game.prototype.createPlatforms = function (platformCount){
         this.platforms.push(newPlatform)
     }
 }
+Game.prototype.updatePlataforms = function (){
+    let platGap = 600 / 5
+    let newPlatBottom = 50 + 4 * platGap
+    let newPlatform = new Platform(newPlatBottom)
+    this.platforms.push(newPlatform)
+    
+}
 Game.prototype.astronautInitial = function () {
     this.astronaut = new Astronaut()
     this.astronaut.coorx = this.platforms[0].left
@@ -32,6 +39,18 @@ Game.prototype.moveAstronaut = function (){
             self.astronaut.rigth()
         }
     }
+}
+Game.prototype.checkMove = function (){
+    this.canvas.removeChild(this.platforms[0].visual)  
+    this.platforms.shift()
+    for (let i = 0; i < this.platforms.length; i++) {
+        let distance =this.platforms[i].bottom 
+        distance -=120
+        this.platforms[i].bottom-=120
+        this.platforms[i].visual.style.bottom = distance + 'px'
+    }
+
+    this.updatePlataforms()
 }
 
 export default Game
