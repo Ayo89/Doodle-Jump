@@ -1,8 +1,8 @@
 import game from './index.js'
 
 function Astronaut(coorx, coory) {
-    this.width = 45
-    this.height = 80
+    this.width = 65
+    this.height = 90
     this.coorx = parseInt(coorx)
     this.coory = parseInt(coory)
     this.dom = document.querySelector('.astronaut')
@@ -20,7 +20,7 @@ Astronaut.prototype.jump = function () {
     let cont = 0
     let self = this
     this.upTimerId = setInterval(function () {
-        self.coory += 10
+        self.coory += 8
         self.dom.style.bottom = self.coory + 'px'
         cont++
 
@@ -41,12 +41,13 @@ Astronaut.prototype.fall = function () {
     
     this.downTimerId = setInterval(function () {
         for (let i = 0; i < game.platforms.length; i++) {
-            if (self.coorx >= game.platforms[i].left && self.coorx <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom && self.coory <= game.platforms[i].bottom + game.platforms[i].height) {
+            if (self.coorx >= game.platforms[i].left && self.coorx <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
+                
                 self.coory += 10
                 clearInterval(self.downTimerId)
                 self.jump()   
             }
-            if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom && self.coory <= game.platforms[i].bottom + game.platforms[i].height){
+            if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom-30 && self.coory <= game.platforms[i].bottom-30 + game.platforms[i].height){
                 self.coory += 10
                 clearInterval(self.downTimerId)
                 self.jump()  
@@ -54,11 +55,8 @@ Astronaut.prototype.fall = function () {
         }
         self.coory -= 10
         self.dom.style.bottom = self.coory + 'px'
-        cont++
-        if (cont > 20) {
-            clearInterval(self.downTimerId)
-            this.isJumping = false
-            self.jump()
+        if(self.coory <= 0){
+        //    console.log("game over")
         }
     }, 40)
 }

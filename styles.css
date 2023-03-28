@@ -16,13 +16,18 @@ body {
 .astronaut {
     z-index: 1;
     position: absolute;
+    background-position: center;
     background-image: url('./images/a.png');
     background-size: cover;
-    background-color: aqua;
+    width: 90px;
+    height: 90px;
 }
 
 .platform {
     position: absolute;
-    background-color: red;
-    /*background-image: url('images/luna.png');*/
+    width: 70px;
+    height: 40px;
+    background-image: url('./images/luna.png');
+    background-size: 90px 120px;
+    background-position: center;
 }
