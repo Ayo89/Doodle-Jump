@@ -5,14 +5,20 @@ body {
     align-items: center;
 }
 
-#canvas {
+.canvas {
     background-image: url('images/HD-wallpaper-black-space-black-star-stars.jpg');
     position: relative;
     width: 450px;
     height: 700px;
     z-index: -1;
 }
-
+.canvas2{
+    background-image: url('images/milky-way-2695569__480.jpg');
+    position: relative;
+    width: 450px;
+    height: 700px;
+    z-index: -1;
+}
 .astronaut {
     z-index: 1;
     position: absolute;
@@ -35,4 +41,21 @@ body {
     background-image: url('./images/luna.png');
     background-size: 90px 120px;
     background-position: center;
+}
+.gameOver{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    position: absolute;
+    display: flex;
+    width: 300px;
+    height: 300px;
+    top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    background-color: aliceblue;
 }

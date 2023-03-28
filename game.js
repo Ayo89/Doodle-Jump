@@ -3,7 +3,8 @@ import Astronaut from './astronaut.js'
 import game from './index.js'
 
 function Game() {
-    this.canvas = document.querySelector('#canvas')
+    this.canvas = document.querySelector('.canvas')
+    console.log(this.canvas)
     this.astronaut
     this.platforms = []
     this.timerId
@@ -50,7 +51,6 @@ Game.prototype.moveAstronaut = function (){
     }
 }
 Game.prototype.checkMove = function (steps){
-   console.log("func")
     this.isMoving = false
 
     for(let i = 0; i< steps; i++){
@@ -67,18 +67,25 @@ Game.prototype.checkMove = function (steps){
 Game.prototype.move = function(){
 
         for (let i = 0; i < game.platforms.length; i++) {
-            let distance = game.platforms[i].bottom
-            distance -= 12
-            game.platforms[i].bottom -= 12
-            game.platforms[i].visual.style.bottom = distance + 'px'
-            game.count = game.count +1
-            console.log(game.count)
             
-        }
-    if (game.count == 60){
-            game.remove()
-            game.updatePlataforms()
-            clearInterval(game.timerId)
+            let distance = game.platforms[i].bottom
+            if (distance <= 0) {
+                game.remove()
+                game.count = game.count + 1
+                
+            }else{
+                distance -= 12
+                game.platforms[i].bottom -= 12
+                game.platforms[i].visual.style.bottom = distance + 'px'
+                game.count = game.count + 1
+
+            }
+            
+            if (game.count == 44) {
+                game.updatePlataforms()
+                clearInterval(game.timerId)
+            }
+
         }
         
 
@@ -87,6 +94,9 @@ Game.prototype.move = function(){
 Game.prototype.remove = function (){
     this.canvas.removeChild(this.platforms[0].visual)
     this.platforms.shift()
+}
+Game.prototype.gameover = function(){
+    
 }
  /*
     distance -= 120

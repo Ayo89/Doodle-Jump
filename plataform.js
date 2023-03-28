@@ -1,4 +1,12 @@
 export default function Platform(newPlatBottom) {
+    if (this.canvas = document.querySelector('.canvas')  == undefined){
+        this.canvas = document.querySelector('.canvas2')
+
+    }else{
+        this.canvas = document.querySelector('.canvas')
+
+    }
+
     this.width = 65
     this.height = 70
     this.left = Math.random() * 350
@@ -10,5 +18,5 @@ export default function Platform(newPlatBottom) {
     visual.style.bottom = this.bottom + 'px'
     visual.style.width = this.width + 'px'
     visual.style.height = this.height + 'px'
-    canvas.appendChild(visual)
+    this.canvas.appendChild(visual)
 }
