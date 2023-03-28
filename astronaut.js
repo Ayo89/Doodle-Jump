@@ -1,4 +1,4 @@
-import game from './index.js'
+import { game, start, restart } from './index.js'
 
 function Astronaut(coorx, coory) {
     this.width = 32
@@ -71,6 +71,7 @@ Astronaut.prototype.fall = function () {
             }
             else if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom-30 && self.coory <= game.platforms[i].bottom-30 + game.platforms[i].height){
                 if (i != 0) {
+
                     game.checkMove(i)
                 }
                 
@@ -105,20 +106,9 @@ Astronaut.prototype.rigth = function () {
 Astronaut.prototype.gameOver = function () {
     this.coory=0
     this.dom.style.bottom = 0 + 'px'
-    let visual = document.createElement('div')
-    visual.classList.add('gameOver')
-    visual.innerHTML = "Gamer Over" + "<br> <br> " + "<button> PRESS TO PLAY </button>"
-    this.canvas.appendChild(visual)
-    addEventListener('click', start)    
-
-}
-function start() {
+    
     
 
-    game.createPlatforms(5)
-    game.astronautInitial()
-    game.astronaut.jump()
-    game.moveAstronaut()
 }
 
 

@@ -42,7 +42,7 @@ body {
     background-size: 90px 120px;
     background-position: center;
 }
-.gameOver{
+.start-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,4 +58,7 @@ body {
         bottom: 0;
         margin: auto;
     background-color: aliceblue;
+}
+.hide{
+    display: none;
 }

@@ -54,7 +54,7 @@ Game.prototype.checkMove = function (steps){
     this.isMoving = false
 
     for(let i = 0; i< steps; i++){
-        
+
         if (!this.isMoving) {
             game.count = 0
 
@@ -65,9 +65,10 @@ Game.prototype.checkMove = function (steps){
        
 }
 Game.prototype.move = function(){
+    console.log(game.platforms)
 
         for (let i = 0; i < game.platforms.length; i++) {
-            
+            console.log(game.platforms)
             let distance = game.platforms[i].bottom
             if (distance <= 0) {
                 game.remove()

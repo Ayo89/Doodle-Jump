@@ -1,23 +1,19 @@
 import Game from './game.js'
 
 let canvas = document.querySelector('.canvas')
-let visual = document.createElement('div')
-visual.classList.add('gameOver')
-visual.innerHTML = "Start" + "<br> <br> " + '<button class="startB" > PRESS TO PLAY </button>'
-canvas.appendChild(visual)
-let startButton = document.getElementsByClassName('startB')[0]
-console.log(startButton)
-addEventListener('click', start)
+let boton = document.querySelector('.start-btn')
+boton.addEventListener('click', start)
 
 
-let game = new Game()
 
-function start(){
+export let game = new Game()
+
+export function start(){
     let astronaut = document.createElement('div')
+    let startPage = document.querySelector('.start-page')
     astronaut.classList.add('astronaut')
     canvas.appendChild(astronaut)
-
-    canvas.removeChild(visual)
+    startPage.classList.add('hide')
     
     game.createPlatforms(5)
     game.astronautInitial()
@@ -25,11 +21,21 @@ function start(){
     game.moveAstronaut()
 }
 
-function restart(){
+export function restart(){
+    let body = document.getElementsByTagName('body')[0]
+    console.log(body)
+    console.log("llega")
     body.removeChild(canvas)
-    let game = new Game()
-
+    canvas = document.createElement('div')
+    canvas.classList.add('canvas')
+    body.appendChild(canvas)
+    game = new Game()
+    console.log(game.platforms)
+    game.platforms = []
+    console.log(game.platforms)
     start()    
+    console.log(game.platforms)
+
 }
 
-export default game 
+export default game  
