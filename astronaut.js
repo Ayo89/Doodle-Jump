@@ -39,7 +39,10 @@ Astronaut.prototype.jump = function () {
             } 
         }
         if (self.coory >= 760) {
-            self.coory = 250
+            self.coorx = game.platforms[1].left
+            self.dom.style.left = self.coorx + 'px'
+
+            self.coory = 300
             self.dom.style.bottom = 200 + 'px'
             if (!this.Wind) {
                 canvas.classList.remove('canvas')
