@@ -120,7 +120,8 @@ Astronaut.prototype.cargarSonido = function (num) {
     if (num == 1){
          audio = new Audio('./jump.wav')
     } else if (num == 2){
-         audio = new Audio("./game_over.wav")
+        audio = new Audio("./game_over.wav")
+        //audio = new Audio({ volume: 1, src:["./game_over.wav"] })
     }
     
     audio.play()
