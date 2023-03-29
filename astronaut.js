@@ -82,8 +82,11 @@ Astronaut.prototype.fall = function () {
         }
         self.coory -= 10
         self.dom.style.bottom = self.coory + 'px'
-        if(self.coory <= 0){
-            self.gameOver()
+        console.log(self.coory)
+        if(parseInt(self.coory) <= 0){
+            console.log('hola')
+            
+           return self.gameOver()
         }
         
     }, 40)
@@ -91,6 +94,7 @@ Astronaut.prototype.fall = function () {
 
 Astronaut.prototype.left = function () {
     this.coorx -= 10
+    console.log(this.coorx)
     if (this.coorx < -25) {
         this.coorx = 380
     }
@@ -98,17 +102,20 @@ Astronaut.prototype.left = function () {
 }
 Astronaut.prototype.rigth = function () {
     this.coorx += 10
+    console.log(this.coorx)
     if (this.coorx > 380) {
         this.coorx = -25
     }
     this.dom.style.left = this.coorx + 'px'
 }
 Astronaut.prototype.gameOver = function () {
+    clearInterval(this.downTimerId)
     this.coory=0
     this.dom.style.bottom = 0 + 'px'
-    
-    
-
+    this.botonRestart = document.querySelector('.start-btn2')
+    this.botonRestart.addEventListener('click', restart)
+    this.gameOverr = document.querySelector('.gameover')
+    this.gameOverr.classList.add('see')
 }
 
 
