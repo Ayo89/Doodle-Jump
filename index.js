@@ -39,7 +39,10 @@ export function setScore (score){
 
 }
 export function restart(){
+
     for(let i = 0; i < game.platforms.length;i++){
+        clearInterval(game.platforms[i].timerIdplat)
+        
         canvas.removeChild(game.platforms[i].visual)
     }
     game.platforms = []

@@ -53,6 +53,14 @@ body {
     background-size: 90px 120px;
     background-position: center;
 }
+.platform2 {
+    position: absolute;
+    width: 80px;
+    height: 90px;
+    background-image: url('./images/moveMoon.png');
+    background-size: 120px 170px;
+    background-position: center;
+}
 .enemie {
     position: absolute;
     width: 85px;

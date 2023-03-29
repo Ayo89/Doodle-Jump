@@ -2,6 +2,7 @@ import Platform from './plataform.js'
 import Astronaut from './astronaut.js'
 import { game, setScore } from './index.js'
 import Enemie from './enemie.js'
+import MovePlatform from './movePlataform.js'
 
 function Game() {
     this.canvas = document.querySelector('.canvas')
@@ -12,6 +13,7 @@ function Game() {
     this.count = 0
     this.score = 0
     this.countForEnemies = 1
+    this.flag = true
 }
 Game.prototype.createPlatforms = function (platformCount){
     for (let i = 0; i < platformCount; i++) {
@@ -23,11 +25,20 @@ Game.prototype.createPlatforms = function (platformCount){
 }
 Game.prototype.updatePlataforms = function (){
 
-    if(this.countForEnemies % 5 == 0){
-        let EnemtGap = 720 / 7
-        let newEnemBottom = 50 + (6) * EnemtGap
-        let newEnem = new Enemie(newEnemBottom)
-        this.platforms.push(newEnem)
+    if(this.countForEnemies % 5  == 2){
+        if(this.flag){
+            let EnemtGap = 720 / 7
+            let newEnemBottom = 50 + (6) * EnemtGap
+            let newEnem = new Enemie(newEnemBottom)
+            this.platforms.push(newEnem)
+            this.flag =false
+        }else{
+            let EnemtGap = 720 / 7
+            let newEnemBottom = 50 + (6) * EnemtGap
+            let movePlat = new MovePlatform(newEnemBottom)
+            this.platforms.push(movePlat)
+            this.flag = true
+        }
     }else{
         let platGap = 720 / 7
         let newPlatBottom = 50 + (6) * platGap
@@ -103,6 +114,7 @@ Game.prototype.move = function(){
     
 }
 Game.prototype.remove = function (){
+    clearInterval(this.platforms[0].timerIdplat)
     this.canvas.removeChild(this.platforms[0].visual)
     this.platforms.shift()
 }

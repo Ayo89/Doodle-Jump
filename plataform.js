@@ -6,16 +6,16 @@ export default function Platform(newPlatBottom) {
         this.canvas = document.querySelector('.canvas')
     }
     this.isEnemie = false
-    this.width = 65
-    this.height = 70
+    this.width = 80
+    this.height = 90
     this.left = Math.random() * 550
     this.bottom = newPlatBottom
     this.visual = document.createElement('div')
-    const visual = this.visual
-    visual.classList.add('platform')
-    visual.style.left = this.left + 'px'
-    visual.style.bottom = this.bottom + 'px'
-    visual.style.width = this.width + 'px'
-    visual.style.height = this.height + 'px'
-    this.canvas.appendChild(visual)
+    //const visual = this.visual
+    this.visual.classList.add('platform')
+    this.visual.style.left = this.left + 'px'
+    this.visual.style.bottom = this.bottom + 'px'
+    this.visual.style.width = this.width + 'px'
+    this.visual.style.height = this.height + 'px'
+    this.canvas.appendChild(this.visual)
 }
