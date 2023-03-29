@@ -88,3 +88,12 @@ button{
 .see {
     display: flex;   
 }
+.score{
+    width: 130px;
+    height: 50px;
+    color: red;
+    font-size: 25px;
+    position: absolute;
+    right: 0;
+    top: 10px;
+}

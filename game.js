@@ -1,6 +1,6 @@
 import Platform from './plataform.js'
 import Astronaut from './astronaut.js'
-import game from './index.js'
+import { game, setScore } from './index.js'
 
 function Game() {
     this.canvas = document.querySelector('.canvas')
@@ -10,6 +10,7 @@ function Game() {
     this.timerId
     this.isMoving =false
     this.count = 0
+    this.score = 0
 }
 Game.prototype.createPlatforms = function (platformCount){
     for (let i = 0; i < platformCount; i++) {
@@ -65,12 +66,11 @@ Game.prototype.checkMove = function (steps){
        
 }
 Game.prototype.move = function(){
-    console.log(game.platforms)
-
         for (let i = 0; i < game.platforms.length; i++) {
-            console.log(game.platforms)
             let distance = game.platforms[i].bottom
             if (distance <= 0) {
+                game.score +=10 
+                setScore(game.score)
                 game.remove()
                 game.count = game.count + 1
                 
@@ -96,9 +96,7 @@ Game.prototype.remove = function (){
     this.canvas.removeChild(this.platforms[0].visual)
     this.platforms.shift()
 }
-Game.prototype.gameover = function(){
-    
-}
+
  /*
     distance -= 120
     this.platforms[i].bottom -= 120

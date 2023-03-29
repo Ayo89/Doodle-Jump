@@ -38,7 +38,6 @@ Astronaut.prototype.jump = function () {
                 canvas.classList.add('canvas2')
                 this.Wind =true
             }else{
-                console.log("entra")
                 canvas2.classList.remove('canvas2')
                 canvas2.classList.add('canvas')
                 this.Wind = false
@@ -82,9 +81,7 @@ Astronaut.prototype.fall = function () {
         }
         self.coory -= 10
         self.dom.style.bottom = self.coory + 'px'
-        console.log(self.coory)
         if(parseInt(self.coory) <= 0){
-            console.log('hola')
             
            return self.gameOver()
         }
@@ -93,16 +90,14 @@ Astronaut.prototype.fall = function () {
 }
 
 Astronaut.prototype.left = function () {
-    this.coorx -= 10
-    console.log(this.coorx)
+    this.coorx -= 8
     if (this.coorx < -25) {
         this.coorx = 620
     }
     this.dom.style.left = this.coorx + 'px'
 }
 Astronaut.prototype.rigth = function () {
-    this.coorx += 10
-    console.log(this.coorx)
+    this.coorx += 8
     if (this.coorx > 640) {
         this.coorx = -25
     }
