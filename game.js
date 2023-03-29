@@ -1,7 +1,7 @@
 import Platform from './plataform.js'
 import Astronaut from './astronaut.js'
 import { game, setScore } from './index.js'
-import Enemie from '../enemie.js'
+import Enemie from './enemie.js'
 
 function Game() {
     this.canvas = document.querySelector('.canvas')
