@@ -57,29 +57,26 @@ Game.prototype.astronautInitial = function () {
     
 }
 Game.prototype.moveAstronaut = function (){
-    document.addEventListener('keydown', control)
+    document.addEventListener('keydown', this.move2)
+    
+}
+Game.prototype.move2 = function (e) {
     let astronautVisual = document.querySelector('.astronaut')
-    let self = this
-    function control(e) {
-        if (e.key === 'ArrowLeft') {
-            astronautVisual.classList.add('astronautLet')
-            astronautVisual.classList.remove('astronautRigth')
-            self.astronaut.left()
-        } else if (e.key === 'ArrowRight') {
-            astronautVisual.classList.add('astronautRigth')
-            astronautVisual.classList.remove('astronautLet')
-            self.astronaut.rigth()
-        }
+    if (e.key === 'ArrowLeft') {
+        astronautVisual.classList.add('astronautLet')
+        astronautVisual.classList.remove('astronautRigth')
+        game.astronaut.left()
+    } else if (e.key === 'ArrowRight') {
+        astronautVisual.classList.add('astronautRigth')
+        astronautVisual.classList.remove('astronautLet')
+        game.astronaut.rigth()
     }
 }
 Game.prototype.checkMove = function (steps){
     this.isMoving = false
-
     for(let i = 0; i< steps; i++){
-
         if (!this.isMoving) {
             game.count = 0
-
             this.timerId=  setInterval (this.move, 70 )
             this.isMoving = true
         }    

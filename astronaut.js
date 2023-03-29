@@ -109,30 +109,30 @@ Astronaut.prototype.fall = function () {
         
     }, 40)
 }
-
 Astronaut.prototype.left = function () {
-    this.coorx -= 8
+    this.coorx -= 10
     if (this.coorx < -25) {
         this.coorx = 620
     }
     this.dom.style.left = this.coorx + 'px'
 }
 Astronaut.prototype.rigth = function () {
-    this.coorx += 8
+    this.coorx += 10
     if (this.coorx > 640) {
         this.coorx = -25
     }
     this.dom.style.left = this.coorx + 'px'
 }
 Astronaut.prototype.gameOver = function () {
+    clearInterval(this.upTimerId)
     clearInterval(this.downTimerId)
     this.coory=0
     this.cargarSonido(2)
     this.dom.style.bottom = 0 + 'px'
-    this.botonRestart = document.querySelector('.start-btn2')
-    this.botonRestart.addEventListener('click', restart)
     this.gameOverr = document.querySelector('.gameover')
     this.gameOverr.classList.add('see')
+    document.removeEventListener('keydown', game.move2)
+
 }
 Astronaut.prototype.cargarSonido = function (num) {
     let audio
