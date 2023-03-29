@@ -4,7 +4,6 @@ import { game, setScore } from './index.js'
 
 function Game() {
     this.canvas = document.querySelector('.canvas')
-    console.log(this.canvas)
     this.astronaut
     this.platforms = []
     this.timerId

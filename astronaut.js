@@ -64,6 +64,7 @@ Astronaut.prototype.fall = function () {
                     game.checkMove(i)
 
                 }
+                self.cargarSonido(1)
                 //self.coory += 10
                 clearInterval(self.downTimerId)
                 self.jump()   
@@ -73,7 +74,8 @@ Astronaut.prototype.fall = function () {
 
                     game.checkMove(i)
                 }
-                
+                self.cargarSonido(1)
+
                 //self.coory += 10
                 clearInterval(self.downTimerId)
                 self.jump()  
@@ -106,13 +108,23 @@ Astronaut.prototype.rigth = function () {
 Astronaut.prototype.gameOver = function () {
     clearInterval(this.downTimerId)
     this.coory=0
+    this.cargarSonido(2)
     this.dom.style.bottom = 0 + 'px'
     this.botonRestart = document.querySelector('.start-btn2')
     this.botonRestart.addEventListener('click', restart)
     this.gameOverr = document.querySelector('.gameover')
     this.gameOverr.classList.add('see')
 }
-
+Astronaut.prototype.cargarSonido = function (num) {
+    let audio
+    if (num == 1){
+         audio = new Audio('./jump.wav')
+    } else if (num == 2){
+         audio = new Audio("./game_over.wav")
+    }
+    
+    audio.play()
+};
 
 
 export default Astronaut

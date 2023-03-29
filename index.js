@@ -35,7 +35,6 @@ export function start(){
 }
 export function setScore (score){
     let scoreCanvas = document.querySelector('.score')
-    console.log(score)
     scoreCanvas.innerText = "Score: " + score
 
 }
