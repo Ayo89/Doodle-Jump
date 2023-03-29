@@ -9,7 +9,7 @@ export default function Platform(newPlatBottom) {
 
     this.width = 65
     this.height = 70
-    this.left = Math.random() * 350
+    this.left = Math.random() * 550
     this.bottom = newPlatBottom
     this.visual = document.createElement('div')
     const visual = this.visual

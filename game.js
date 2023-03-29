@@ -13,15 +13,15 @@ function Game() {
 }
 Game.prototype.createPlatforms = function (platformCount){
     for (let i = 0; i < platformCount; i++) {
-        let platGap = 600 / platformCount
+        let platGap = 720 / platformCount
         let newPlatBottom = 50 + i * platGap
         let newPlatform = new Platform(newPlatBottom)
         this.platforms.push(newPlatform)
     }
 }
 Game.prototype.updatePlataforms = function (){
-    let platGap = 600 / 5
-    let newPlatBottom = 50 + (4) * platGap 
+    let platGap = 720 / 7
+    let newPlatBottom = 50 + (6) * platGap 
     let newPlatform = new Platform(newPlatBottom)
     this.platforms.push(newPlatform)
     
@@ -82,7 +82,7 @@ Game.prototype.move = function(){
 
             }
             
-            if (game.count == 44) {
+            if (game.count == 55) {
                 game.updatePlataforms()
                 clearInterval(game.timerId)
             }

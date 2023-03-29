@@ -30,8 +30,8 @@ Astronaut.prototype.jump = function () {
         let canvas2 = document.querySelector('.canvas2')
 
         
-        if (self.coory >= 620) {
-            self.coory = 200
+        if (self.coory >= 720) {
+            self.coory = 250
             self.dom.style.bottom = 200 + 'px'
             if (!this.Wind) {
                 canvas.classList.remove('canvas')
@@ -96,14 +96,14 @@ Astronaut.prototype.left = function () {
     this.coorx -= 10
     console.log(this.coorx)
     if (this.coorx < -25) {
-        this.coorx = 380
+        this.coorx = 620
     }
     this.dom.style.left = this.coorx + 'px'
 }
 Astronaut.prototype.rigth = function () {
     this.coorx += 10
     console.log(this.coorx)
-    if (this.coorx > 380) {
+    if (this.coorx > 640) {
         this.coorx = -25
     }
     this.dom.style.left = this.coorx + 'px'

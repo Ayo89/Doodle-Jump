@@ -20,7 +20,7 @@ export function start(){
     if(game.platforms.length == 0){
         
         game.moveAstronaut()
-        game.createPlatforms(5)
+        game.createPlatforms(7)
     }
     game.astronautInitial()
     game.astronaut.jump()
