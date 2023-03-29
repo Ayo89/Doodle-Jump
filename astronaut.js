@@ -29,8 +29,16 @@ Astronaut.prototype.jump = function () {
         let canvas = document.querySelector('.canvas')
         let canvas2 = document.querySelector('.canvas2')
 
-        
-        if (self.coory >= 720) {
+        for (let i = 0; i < game.platforms.length; i++) {
+            if (game.platforms[i].isEnemie == true) {
+                if (self.coorx >= game.platforms[i].left && self.coorx <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
+                    self.gameOver()
+                } else if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
+                    self.gameOver()
+                }
+            } 
+        }
+        if (self.coory >= 760) {
             self.coory = 250
             self.dom.style.bottom = 200 + 'px'
             if (!this.Wind) {
@@ -59,26 +67,34 @@ Astronaut.prototype.fall = function () {
     let self = this
     this.downTimerId = setInterval(function () {
         for (let i = 0; i < game.platforms.length; i++) {
-            if (self.coorx >= game.platforms[i].left && self.coorx <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
-                if(i !== 0){
-                    game.checkMove(i)
+            if (game.platforms[i].isEnemie == true){
+                if (self.coorx >= game.platforms[i].left && self.coorx <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
+                    self.gameOver()
+                } else if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
+                    self.gameOver()
+                }    
+            }else{
+                if (self.coorx >= game.platforms[i].left && self.coorx <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
+                    if (i !== 0) {
+                        game.checkMove(i)
 
+                    }
+                    self.cargarSonido(1)
+                    //self.coory += 10
+                    clearInterval(self.downTimerId)
+                    self.jump()
                 }
-                self.cargarSonido(1)
-                //self.coory += 10
-                clearInterval(self.downTimerId)
-                self.jump()   
-            }
-            else if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom-30 && self.coory <= game.platforms[i].bottom-30 + game.platforms[i].height){
-                if (i != 0) {
+                else if (self.coorx + self.width >= game.platforms[i].left && self.coorx + self.width <= game.platforms[i].left + game.platforms[i].width && self.coory >= game.platforms[i].bottom - 30 && self.coory <= game.platforms[i].bottom - 30 + game.platforms[i].height) {
+                    if (i != 0) {
 
-                    game.checkMove(i)
+                        game.checkMove(i)
+                    }
+                    self.cargarSonido(1)
+
+                    //self.coory += 10
+                    clearInterval(self.downTimerId)
+                    self.jump()
                 }
-                self.cargarSonido(1)
-
-                //self.coory += 10
-                clearInterval(self.downTimerId)
-                self.jump()  
             }
         }
         self.coory -= 10

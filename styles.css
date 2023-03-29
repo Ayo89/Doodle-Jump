@@ -53,6 +53,15 @@ body {
     background-size: 90px 120px;
     background-position: center;
 }
+.enemie {
+    position: absolute;
+    width: 85px;
+    height: 40px;
+    background-image: url('./images/enemie.png');
+    background-size: 90px 120px;
+    background-position: center;
+        background-size: cover;
+}
 .start-page{
     flex-direction: column;
     justify-content: end;

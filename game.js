@@ -1,6 +1,7 @@
 import Platform from './plataform.js'
 import Astronaut from './astronaut.js'
 import { game, setScore } from './index.js'
+import Enemie from '../enemie.js'
 
 function Game() {
     this.canvas = document.querySelector('.canvas')
@@ -10,6 +11,7 @@ function Game() {
     this.isMoving =false
     this.count = 0
     this.score = 0
+    this.countForEnemies = 1
 }
 Game.prototype.createPlatforms = function (platformCount){
     for (let i = 0; i < platformCount; i++) {
@@ -20,11 +22,20 @@ Game.prototype.createPlatforms = function (platformCount){
     }
 }
 Game.prototype.updatePlataforms = function (){
-    let platGap = 720 / 7
-    let newPlatBottom = 50 + (6) * platGap 
-    let newPlatform = new Platform(newPlatBottom)
-    this.platforms.push(newPlatform)
+
+    if(this.countForEnemies % 5 == 0){
+        let EnemtGap = 720 / 7
+        let newEnemBottom = 50 + (6) * EnemtGap
+        let newEnem = new Enemie(newEnemBottom)
+        this.platforms.push(newEnem)
+    }else{
+        let platGap = 720 / 7
+        let newPlatBottom = 50 + (6) * platGap
+        let newPlatform = new Platform(newPlatBottom)
+        this.platforms.push(newPlatform)
+    }
     
+    this.countForEnemies += this.countForEnemies+1
 }
 Game.prototype.astronautInitial = function () {
     this.astronaut = new Astronaut()

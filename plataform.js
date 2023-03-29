@@ -4,9 +4,8 @@ export default function Platform(newPlatBottom) {
 
     }else{
         this.canvas = document.querySelector('.canvas')
-
     }
-
+    this.isEnemie = false
     this.width = 65
     this.height = 70
     this.left = Math.random() * 550
