@@ -5,6 +5,7 @@ export default function Enemie(newEnemBottom) {
     } else {
         this.canvas = document.querySelector('.canvas')
     }
+    this.direction = 1
     this.width = 85
     this.isEnemie = true
     this.height = 85
@@ -17,5 +18,15 @@ export default function Enemie(newEnemBottom) {
     visual.style.bottom = this.bottom + 'px'
     visual.style.width = this.width + 'px'
     visual.style.height = this.height + 'px'
-    this.canvas.appendChild(visual)
+    let self = this
+    this.timerIdplat2 = setInterval(function () {
+        self.left += 5 * self.direction
+        if (self.left >= 580) {
+            self.direction = -1
+        } else if (self.left <= 0) {
+            self.direction = 1
+        }
+        self.visual.style.left = self.left + 'px'
+        self.canvas.appendChild(self.visual)
+    }, 60)
 } 

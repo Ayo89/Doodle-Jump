@@ -1,3 +1,4 @@
+import Enemie from './enemie.js'
 import Game from './game.js'
 
 let canvas = document.querySelector('.canvas')
@@ -41,7 +42,8 @@ export function setScore (score){
 export function restart(){
     for(let i = 0; i < game.platforms.length;i++){
         clearInterval(game.platforms[i].timerIdplat)
-        canvas.removeChild(game.platforms[i].visual)
+        clearInterval(game.platforms[i].timerIdplat2)
+        canvas.removeChild(game.platforms[i].visual)  
     }
     game.platforms = []
     game.score = 0

@@ -77,7 +77,7 @@ Game.prototype.checkMove = function (steps){
     for(let i = 0; i< steps; i++){
         if (!this.isMoving) {
             game.count = 0
-            this.timerId=  setInterval (this.move, 70 )
+            this.timerId=  setInterval (this.move, 30)
             this.isMoving = true
         }    
     }   
@@ -112,6 +112,7 @@ Game.prototype.move = function(){
 }
 Game.prototype.remove = function (){
     clearInterval(this.platforms[0].timerIdplat)
+    clearInterval(this.platforms[0].timerIdplat2)
     this.canvas.removeChild(this.platforms[0].visual)
     this.platforms.shift()
 }

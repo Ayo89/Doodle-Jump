@@ -50,7 +50,6 @@ Astronaut.prototype.jump = function () {
                 canvas.classList.add('canvas2')
                 this.Wind =true
             }else{
-                self.coorx = game.platforms[2].left
                 canvas2.classList.remove('canvas2')
                 canvas2.classList.add('canvas')
                 this.Wind = false

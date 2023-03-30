@@ -21,7 +21,6 @@ export default function MovePlatform(newPlatBottom) {
     self.left = 0
     this.timerIdplat = setInterval(function (){
         self.left += 5 * self.direction
-        console.log(self.left)
         if (self.left >= 580){
             self.direction = -1
         }else if(self.left <= 0) {
@@ -29,6 +28,6 @@ export default function MovePlatform(newPlatBottom) {
         }
         self.visual.style.left = self.left + 'px'
         self.canvas.appendChild(self.visual)
-    }, 35)
+    }, 45)
     
 }
