@@ -5,6 +5,7 @@ export default function MovePlatform(newPlatBottom) {
     } else {
         this.canvas = document.querySelector('.canvas')
     }
+    this.direction = 1
     this.isEnemie = false
     this.width = 65
     this.height = 70
@@ -17,13 +18,17 @@ export default function MovePlatform(newPlatBottom) {
     this.visual.style.width = this.width + 'px'
     this.visual.style.height = this.height + 'px'
     let self = this
-    this.timerIdplat = setInterval(function (newPlatBottom){
-        self.left += 18
-        if (self.left >= 600){
-            self.left = 0
+    self.left = 0
+    this.timerIdplat = setInterval(function (){
+        self.left += 5 * self.direction
+        console.log(self.left)
+        if (self.left >= 580){
+            self.direction = -1
+        }else if(self.left <= 0) {
+            self.direction = 1
         }
         self.visual.style.left = self.left + 'px'
         self.canvas.appendChild(self.visual)
-    }, 150)
+    }, 35)
     
 }
